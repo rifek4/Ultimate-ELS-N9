@@ -27,7 +27,7 @@
  *
  * <<Broadcom-WL-IPTag/Open:>>
  *
- * $Id: dhd.h 851174 2019-11-18 12:13:55Z $
+ * $Id: dhd.h 871395 2020-04-01 06:47:36Z $
  */
 
 /****************
@@ -2637,6 +2637,7 @@ static INLINE int dhd_check_module_mac(dhd_pub_t *dhdp) { return 0; }
 int dhd_read_cis(dhd_pub_t *dhdp);
 void dhd_clear_cis(dhd_pub_t *dhdp);
 #if defined(SUPPORT_MULTIPLE_MODULE_CIS) && defined(USE_CID_CHECK)
+bool dhd_check_module(char *module_name);
 extern int dhd_check_module_b85a(void);
 extern int dhd_check_module_b90(void);
 #define BCM4359_MODULE_TYPE_B90B 1
@@ -3217,7 +3218,9 @@ int dhd_print_rtt_data(void *dev, dhd_pub_t *dhdp, const void *user_buf,
 	void *fp, uint32 len, void *pos);
 int dhd_get_debug_dump_file_name(void *dev, dhd_pub_t *dhdp,
 	char *dump_path, int size);
+#if defined(BCMPCIE)
 uint32 dhd_get_ext_trap_len(void *ndev, dhd_pub_t *dhdp);
+#endif /* BCMPCIE */
 uint32 dhd_get_time_str_len(void);
 uint32 dhd_get_health_chk_len(void *ndev, dhd_pub_t *dhdp);
 uint32 dhd_get_dhd_dump_len(void *ndev, dhd_pub_t *dhdp);
